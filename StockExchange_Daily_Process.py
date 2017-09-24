@@ -1,9 +1,13 @@
+##Author : Aditya Wagholikar
+##Date : 9/24/2017
 import csv
 from math import floor
 from pandas.io.tests.parser import quoting
+
+
 stock_lst = []
 flag = 0
-
+counter = 0
 code_t = ""
 max_time_gap_t=-999
 volume_t = 0
@@ -64,6 +68,7 @@ class Stock:
         
 with open('E:\input.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter = ',')
+    
     stock_master = []
     temp1 = []
     temp2 = []
@@ -71,6 +76,8 @@ with open('E:\input.csv') as csvfile:
     
     for row in readCSV:
         stock_t = Stock(row[1], int(row[0]), int(row[2]), int(row[3]), int(row[3]))
+        counter = counter + 1
+        print('Counter  is : ', counter)
         if flag== 0:
             stock_lst.append(row[1])            
             stock_master.append(stock_t)
