@@ -1,5 +1,6 @@
 import csv
 from math import floor
+from pandas.io.tests.parser import quoting
 stock_lst = []
 flag = 0
 
@@ -61,7 +62,7 @@ class Stock:
         
         
         
-with open('E:\input1.csv') as csvfile:
+with open('E:\input.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter = ',')
     stock_master = []
     temp1 = []
@@ -103,3 +104,8 @@ with open('E:\input1.csv') as csvfile:
     for item in stock_master:
         print(item.displayStock())    
 
+with open('E:\output.csv', 'w', newline = '') as csvfile:
+    stockwriter = csv.writer(csvfile, quoting = csv.QUOTE_NONE)
+    for j in range(0, len(stock_master),1):
+        stockwriter.writerow([stock_master[j].code,stock_master[j].max_time_gap,stock_master[j].volume,stock_master[j].max_trade,stock_master[j].weighted_avg_price])
+        
